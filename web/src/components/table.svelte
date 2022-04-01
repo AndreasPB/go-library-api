@@ -51,9 +51,15 @@
 					<td>{book.title}</td>
 					<td>{book.author}</td>
 					<td>{book.quantity}</td>
-					<td>
-						<button on:click={(_) => checkoutBook(book.id)}>Checkout</button>
-					</td>
+					{#if book.quantity > 0}
+						<td>
+							<button on:click={(_) => checkoutBook(book.id)}>Checkout</button>
+						</td>
+					{:else}
+						<td>
+							<button disabled>Checkout</button>
+						</td>
+					{/if}
 					<td>
 						<button on:click={(_) => returnBook(book.id)}>Return</button>
 					</td>
